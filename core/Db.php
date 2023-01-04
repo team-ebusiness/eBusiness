@@ -299,4 +299,23 @@ class Db
     {
         return $this->query("SHOW COLUMNS FROM $_table")->results();
     }
+
+    /**
+     * It calls a stored procedure.
+     *
+     * @param string $procedure procedure The name of the procedure to call.
+     * @param array $params params an array of parameters to be passed to the procedure.
+     *
+     * @return bool|stdClass|array The results of the query.
+     */
+    public function call_procedure(string $procedure, array $params = []): bool|stdClass|array
+    {
+        $sql = "call $procedure(";
+        $sql .= str_repeat('?,', count($params) - 1);
+        $sql .= '?)';
+        if ($this->query($sql, $params)) {
+            return $this->_results;
+        }
+        return false;
+    }
 }

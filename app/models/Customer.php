@@ -2,10 +2,9 @@
 
 class Customer extends Model
 {
-    private $_isLoggedIn;
     private string $_cookieName;
     private string $_sessionName;
-    public static $currentLoggedInUser = null;
+    public static Customer|null $currentLoggedInUser = null;
 
     public function __construct($user = '')
     {
@@ -38,6 +37,7 @@ class Customer extends Model
     public function signin($rememberMe = false)
     {
         Session::set($this->_sessionName, $this->id);
+
         if ($rememberMe) {
             $hash = md5(uniqid() . rand(0, 100));
             $user_agent = Session::uagent_no_version();
@@ -46,6 +46,7 @@ class Customer extends Model
             $this->_db->query("DELETE FROM user_session WHERE user_id = ? AND user_agent = ?", [$this->id, $user_agent]);
             $this->_db->insert('user_session', $fields);
         }
+        $_SESSION['isLoggedIn'] = true;
     }
 
     public static function signinUserFromCookie(): Customer
@@ -63,6 +64,12 @@ class Customer extends Model
         return $currentLoggedInUser;
     }
 
+    /**
+     * If the current logged-in user is not set, and the session exists, then set the current logged-in user to the user
+     * with the id stored in the session
+     *
+     * @return ?Customer The current logged-in user.
+     */
     public static function currentLoggedInUser(): ?Customer
     {
         if (!isset(self::$currentLoggedInUser)) {
@@ -74,6 +81,11 @@ class Customer extends Model
         return self::$currentLoggedInUser;
     }
 
+    /**
+     * > Delete the current user's session from the database and delete the session and cookie from the browser
+     *
+     * @return bool A boolean value.
+     */
     public function logout(): bool
     {
         $user_agent = Session::uagent_no_version();
@@ -83,6 +95,7 @@ class Customer extends Model
             Cookie::delete(REMEMBER_ME_COOKIE_NAME);
         }
         self::$currentLoggedInUser = null;
+        $_SESSION['isLoggedIn'] = false;
         return true;
     }
 }

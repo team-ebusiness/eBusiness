@@ -1,22 +1,23 @@
 <?php
 
 class View {
-    protected $_head, $_body, $_outputBuffer;
+    protected string $_head, $_body, $_outputBuffer;
     protected string $_layout = DEFAULT_LAYOUT, $_siteTitle = SITE_TITLE;
-    public $displayErrors = null;
+    public string|null $displayErrors = null;
+    public array $itemsToDisplay = [];
     public function __construct() {
 
     }
 
-    public function render($viewName): void
+    public function render($view): void
     {
-        $viewAry = explode('/', $viewName);
+        $viewAry = explode('/', $view);
         $viewString = implode(DS, $viewAry);
         if (file_exists(ROOT . DS . 'app' . DS . 'views' . DS . $viewString . '.php')) {
             include(ROOT . DS . 'app' . DS . 'views' . DS . $viewString . '.php');
             include(ROOT . DS . 'app' . DS . 'views' . DS . 'layouts' . DS . $this->_layout . '.php');
         } else {
-            die('The view \"' . $viewName . '\" does not exist');
+            die('The view \"' . $view . '\" does not exist');
         }
     }
 

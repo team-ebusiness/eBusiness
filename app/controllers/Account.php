@@ -12,6 +12,10 @@ class Account extends Controller
 
     public function signinAction()
     {
+        if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) {
+            Router::redirect('');
+        }
+
         $validation = new Validate();
         if ($_POST) {
             $validation->check($_POST, [
@@ -36,6 +40,7 @@ class Account extends Controller
                         $remember = isset($_POST['rememberMe']) && Input::get('rememberMe');
                         $user->setId($user->customer_id);
                         $user->signin($remember);
+
                         Router::redirect('');
                     } else {
                         $validation->addError("Invalid password.");
