@@ -50,6 +50,7 @@ class Cart extends Controller {
             header("HTTP/1.1 403 Unauthorized");
             exit;
         }
+        // TODO: implement the functionality to generate the html for the checkout page
 
         $this->view->setLayout('default');
         $this->view->render('cart/checkout');

@@ -92,6 +92,44 @@ class Account extends Controller
                     'display' => 'Password',
                     'required' => true,
                     'min' => 6
+                ],
+                'al1' => [
+                    'display' => 'Address Line 1',
+                    'required' => true,
+                    'min' => 6,
+                    'max' => 150
+                ],
+                'al2' => [
+                    'display' => 'Address Line 2',
+                    'required' => false,
+                    'min' => 6,
+                    'max' => 150
+                ],
+                'city' => [
+                    'display' => 'City',
+                    'required' => true,
+                    'min' => 2,
+                    'max' => 50
+                ],
+                'state' => [
+                    'display' => 'State',
+                    'required' => true,
+                    'min' => 2,
+                    'max' => 50
+                ],
+                'postal' => [
+                    'display' => 'Postal code',
+                    'required' => true,
+                    'min' => 2,
+                    'max' => 50,
+                    'numeric' => true
+                ],
+                'phone' => [
+                    'display' => 'Phone',
+                    'required' => true,
+                    'min' => 2,
+                    'max' => 50,
+                    'phone' => true
                 ]
             ]);
             if ($validation->passed()) {

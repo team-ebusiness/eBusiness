@@ -27,9 +27,9 @@
     <script src="<?= PROOT ?>js/bootstrap.min.js" charset="utf-8"></script>
 </head>
 
-<body>
+<body style="background: rgba(34,35,52,1)">
 <!--change background image here-->
-<img class="background" src="https://www.experionglobal.com/wp-content/uploads/2017/01/Digital-marketplace-for-Indian-e-commerce-startup.png" alt="">
+<!--<img class="background" src="https://www.experionglobal.com/wp-content/uploads/2017/01/Digital-marketplace-for-Indian-e-commerce-startup.png" alt="">-->
 <?= $this->content('body') ?>
 </body>
 
