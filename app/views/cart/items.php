@@ -2,76 +2,128 @@
 
 <?php $this->start('head'); ?>
 
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>View Cart</title>
-<link href="/css/bootstrap.min.css" rel="stylesheet">
-<link href="/css/style.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link href="<?= PROOT ?>css/custom.css" rel="stylesheet">
 
-<style>
-    body {
-        margin:50px;
-    }
-</style>
+
+    <script>
+        $(document).ready(function () {
+            $('.remove').on('click', function () {
+                var id = $(this).attr('id');
+
+                $.ajax({
+                    type: "post",
+                    url: "<?= PROOT ?>cart/remove",
+                    data: {
+                        id: id
+                    },
+                    success: function (data) {
+                        location.reload();
+                    }
+                });
+            });
+        });
+    </script>
 
 <?php $this->end(); ?>
 
 <?php $this->start('body'); ?>
 
-<h1>List of Items</h1>
-<br>
-<table class="table">
-    <thead>
-    <tr>
-        <th>Item Name</th>
-        <th>Image</th>
-        <th>price</th>
-        <th>Quantity</th>
-        <th>Total</th>
-    </tr>
-    </thead>
-    <tbody>
-    <?php
-    $db = Db::getInstance();
-    $getid=$db->query("SELECT user_id FROM user_session");
-    $id=$getid->results();
-    $id=$id[0]->user_id;
+    <section class="h-100" style="background-color: #eee;">
+        <div class="container h-100 py-5">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-10">
 
-    $getid=$db->query("call view_cart($id)");
-    $row=$getid->results();
-    $name=$row[0]->product_name;
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h3 class="fw-normal mb-0 text-black">Shopping Cart</h3>
+                        <div>
+                            <p class="mb-0"><span class="text-muted">Sort by:</span> <a href="#!" class="text-body">price
+                                    <i
+                                            class="fas fa-angle-down mt-1"></i></a></p>
+                        </div>
+                    </div>
+                    <?php
+                    $db = Db::getInstance();
+                    $id = $_SESSION[Customer::currentLoggedInUser()->getSessionName()];
 
-    $stmt = $db->query(
-        "call view_cart($id)");
+                    $rows = $db->call_procedure('view_cart', [$id]);
 
+                    foreach ($rows as $row) {
 
-    $users = $stmt->results();
-    $r=0;
-    $a=$users[$r]->product_name;
+                        ?>
+                        <div class="card rounded-3 mb-4">
+                            <div class="card-body p-4">
+                                <div class="row d-flex justify-content-between align-items-center">
+                                    <div class="col-md-2 col-lg-2 col-xl-2">
 
-    while($r<count($users)){
-        echo "<tr>";
-        echo "<td><img height='64' width='64' src='".$users[$r]->product_variant_img."'></td>";
-        echo "<td>".$users[$r]->product_name."</td>";
-        echo "<td>".$users[$r]->price."</td>";
-        echo "<td>".$users[$r]->quantity."</td>";
-        echo "<td>".$users[$r]->total."</td>";
-        echo "</tr>";
-        $r++;
-    }
-    {
-        ?>
+                                        <?php echo "<img height='64' width='64' src='" . $row->product_variant_img . "' />"; ?>
+                                    </div>
+                                    <div class="col-md-3 col-lg-3 col-xl-3">
+                                        <p class="lead fw-normal mb-2"><?php echo $row->product_name ?></p>
 
-    <?php }
-    ?>
-    </tbody>
+                                    </div>
+                                    <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+                                        <buton
+                                                class="form-control form-control-sm text-center"
+                                                style="height:30px;width:60px"><?php echo $row->quantity ?></buton>
+                                    </div>
+                                    <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                        <h5 class="mb-0"><?php echo $row->quantity ?>
+                                            <span>&#215;</span><?php echo $row->price ?></h5>
+                                    </div>
+                                    <div class="col-md-1 col-lg-1 col-xl-1 text-end remove"
+                                         id="remove<?= $row->product_variant_id ?>">
+                                        <div class="remove-btn">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                 fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                                                <path style="display: block; margin: auto;" d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                        <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-</table>
+                        <?php
+                    }
+                    ?>
+                    <div class="card mb-4">
+                        <div class="card-body p-4 d-flex flex-row">
+                            <div class="form-outline flex-fill ">
+                                <button class="btn btn-warning btn-block btn-lg text-center"
+                                        style="height:50px;width:200px;margin-left: 0px;pointer-events: none;background-color:#f0f0f0;border:none">
+                                    Subtotal
+                                </button>
 
-<button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="button">Continue Shopping</button>
-<form method="POST" action="<?= PROOT ?>cart/checkout">
-    <button type="submit" class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" >Checkout</button>
-</form>
+                            </div>
+                            <button
+                                    class="form-control form-control-sm text-center "
+                                    style="height:50px;width:200px;pointer-events: none">total
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <form method="POST" action="<?= PROOT ?>cart/items">
+                                <button type="submit" class="btn btn-warning btn-block btn-lg text-center"
+                                        style="height:50px;width:200px;margin-left: 8px">Proceed to Pay
+                                </button>
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
 
 <?php $this->end(); ?>

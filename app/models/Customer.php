@@ -98,4 +98,14 @@ class Customer extends Model
         $_SESSION['isLoggedIn'] = false;
         return true;
     }
+
+    /**
+     * This function returns the session name
+     *
+     * @return string The session name.
+     */
+    public function getSessionName(): string
+    {
+        return $this->_sessionName;
+    }
 }
