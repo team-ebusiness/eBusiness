@@ -135,14 +135,20 @@ class Account extends Controller
             if ($validation->passed()) {
                 $db = DB::getInstance();
 
-                $db->insert('customer', [
+                $db->call_procedure('create_customer', [
                     'first_name' => Input::get('first_name'),
                     'last_name' => Input::get('last_name'),
                     'username' => Input::get('username'),
                     'email' => Input::get('email'),
                     'password' => password_hash(Input::get('password'), PASSWORD_DEFAULT),
-                    'account_created_date' => date('Y-m-d H:i:s')
+                    'al1' => Input::get('al1'),
+                    'al2' => Input::get('al2'),
+                    'city' => Input::get('city'),
+                    'state' => Input::get('state'),
+                    'postal' => Input::get('postal'),
+                    'phone' => Input::get('phone')
                 ]);
+
                 Router::redirect('account/signin');
             }
         }
