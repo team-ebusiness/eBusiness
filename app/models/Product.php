@@ -6,4 +6,10 @@ class Product extends Model{
         parent::__construct($table);
     }
     
+    public function getProduct($product_id){
+        return $this->findFirst([
+            'conditions' => 'product_id=?',
+            'bind' => [$product_id]
+        ] );
+    }
 }
