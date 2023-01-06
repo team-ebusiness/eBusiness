@@ -48,7 +48,6 @@ class Browsing extends Controller {
         $this->view->product=$product;
         $this->view->details=$details;
         $this->view->variant_display=$variant_display;
-        //dnd($details);
         $this->view->render('browsing/productVariant');
     }
 }
