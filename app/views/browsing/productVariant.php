@@ -1,4 +1,4 @@
-<?php $this->setSiteTitle('Sign in'); ?>
+<?php $this->setSiteTitle('Variants'); ?>
 
 <?php $this->start('head'); ?>
 
@@ -38,12 +38,17 @@
         </div>
         <?php foreach ($this->details as $key => $value) { ?>
             <div id=<?= $key ?> class="varDiv">
+            <?php if($value[0]->quantity == 0) { ?>
+                <h6>No items left from the selected variant</h6>
+            <?php } else{ ?>
                 <?php foreach ($value as $x => $y) { ?>
                     <?= $y->variant_name . ' : ' . $y->variant_val_name ?><br>
                 <?php } ?>
                 <?= 'Price : Rs.' . $value[0]->price ?><br>
                 <?= 'weight : ' . $value[0]->weight ?><br>
-                <?= 'Product Img : ' . $value[0]->product_variant_img ?><br><br>
+                <?= 'Product Img : ' . $value[0]->product_variant_img ?><br>
+                <a href="">Add to cart</a>
+            <?php }?>
             </div>
         <?php } ?>
     </div>
