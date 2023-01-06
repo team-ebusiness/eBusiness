@@ -18,30 +18,31 @@ class CartItemController extends Controller {
         $customerQuantity = $_POST[$_POST['variant_id']];
         $cartId = $this->CartItemModel->getEmptyCart($_SESSION[CURRENT_USER_SESSION_NAME]);
         $cartProduct = $this->CartItemModel->getCartProducts($_SESSION[CURRENT_USER_SESSION_NAME], $cartId, $_POST['variant_id']);
-        if ($cartProduct){
+        if ($cartProduct->cart_id){
             $updatedQuantity = $cartProduct->quantity + $customerQuantity;
-        }
-        if ($currentQuantity>=$updatedQuantity){
-            $this->CartItemModel->updateQuantity($_SESSION[CURRENT_USER_SESSION_NAME]
-            ,$cartId,$_POST['variant_id'],(string)$updatedQuantity);
-            $_SESSION['msg'] = "Item added to the cart";
-            Router::redirect("Browsing");
-        }else{
-            $_SESSION['msg'] = "Not enough quantity available";
-            Router::redirect("Browsing");
-        }
-        if ($currentQuantity>=$customerQuantity) {
-            $this->CartItemModel->insert([
-                'customer_id' => $_SESSION[CURRENT_USER_SESSION_NAME],
-                'cart_id' => $cartId,
-                'product_variant_id' => $_POST['variant_id'],
-                'quantity' => $customerQuantity
-            ]);
-            $_SESSION['msg'] = "Item added to the cart";
-            Router::redirect("Browsing");
+            if ($currentQuantity>=$updatedQuantity){
+                $this->CartItemModel->updateQuantity($_SESSION[CURRENT_USER_SESSION_NAME]
+                ,$cartId,$_POST['variant_id'],(string)$updatedQuantity);
+                $_SESSION['msg'] = "Item added to the cart";
+                Router::redirect("Browsing");
+            }else{
+                $_SESSION['msg'] = "Not enough quantity available";
+                Router::redirect("Browsing");
+            }
         }else {
-            $_SESSION['msg'] = "Not enough quantity available";
-            Router::redirect("Browsing");
+            if ($currentQuantity>=$customerQuantity) {
+                $this->CartItemModel->insert([
+                    'customer_id' => $_SESSION[CURRENT_USER_SESSION_NAME],
+                    'cart_id' => $cartId,
+                    'product_variant_id' => $_POST['variant_id'],
+                    'quantity' => $customerQuantity
+                ]);
+                $_SESSION['msg'] = "Item added to the cart";
+                Router::redirect("Browsing");
+            }else {
+                $_SESSION['msg'] = "Not enough quantity available";
+                Router::redirect("Browsing");
+            }
         }
 
     }
