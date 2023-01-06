@@ -278,14 +278,14 @@ class Db
      * @param string $table The table you want to query
      * @param array $params The parameters to be passed to the query.
      *
-     * @return bool|stdClass The first result of the query.
+     * @return stdClass|array The first result of the query.
      */
-    public function findFirst(string $table, array $params = []): bool|stdClass
+    public function findFirst(string $table, array $params = []): stdClass|array
     {
         if ($this->_read($table, $params)) {
             return $this->first();
         }
-        return false;
+        return [];
     }
 
     /**
@@ -298,5 +298,24 @@ class Db
     public function get_columns(string $_table): array
     {
         return $this->query("SHOW COLUMNS FROM $_table")->results();
+    }
+
+    /**
+     * It calls a stored procedure.
+     *
+     * @param string $procedure procedure The name of the procedure to call.
+     * @param array $params params an array of parameters to be passed to the procedure.
+     *
+     * @return bool|stdClass|array The results of the query.
+     */
+    public function call_procedure(string $procedure, array $params = []): bool|stdClass|array
+    {
+        $sql = "call $procedure(";
+        $sql .= str_repeat('?,', count($params) - 1);
+        $sql .= '?)';
+        if ($this->query($sql, $params)) {
+            return $this->_results;
+        }
+        return false;
     }
 }

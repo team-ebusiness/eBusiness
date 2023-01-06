@@ -4,7 +4,7 @@ const DEFAULT_CONTROLLER = 'Home'; // default controller if there isn't one defi
 const DEBUG = true; // set to false when in production
 const DEFAULT_LAYOUT = 'default'; // if no layout is set in the controller use this layout
 const SITE_TITLE = 'MVC Framework'; // this will be used if no site title is set
-const PROOT = '/e_commerce_platform/'; // set the server root
+const PROOT = '/e_business/'; // set the server root
 
 
 // database details
