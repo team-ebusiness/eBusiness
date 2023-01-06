@@ -22,7 +22,7 @@ class Validate
             foreach ($rules as $rule => $rule_value) {
                 $value = Input::sanitize(trim($source[$item]));
 
-                if ($rule == 'required' && empty($value)) {
+                if ($rule == 'required' && $rule_value && empty($value)) {
                     $this->addError(["{$display} is required", $item]);
                 } else if (!empty($value)) {
                     switch ($rule) {
@@ -65,6 +65,16 @@ class Validate
                         case 'valid_email':
                             if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
                                 $this->addError(["{$display} must be a valid email address.", $item]);
+                            }
+                            break;
+                        case 'numeric':
+                            if (!is_numeric($value)) {
+                                $this->addError(["{$display} must be an integer.", $item]);
+                            }
+                            break;
+                        case 'phone':
+                            if (!preg_match('/[+]?(9[976]\d|8[987530]\d|6[987]\d|5[90]\d|42\d|3[875]\d|2[98654321]\d|9[8543210]|8[6421]|6[6543210]|5[87654321]|4[987654310]|3[9643210]|2[70]|7|1)\d{1,14}$/', $value)) {
+                                $this->addError(["{$display} must be a valid phone number.", $item]);
                             }
                             break;
                     }

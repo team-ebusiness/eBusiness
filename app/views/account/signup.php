@@ -17,32 +17,71 @@
                         <form class="" action="<?= PROOT ?>account/signup" method="post">
                             <div class="container">
                                 <div class="row">
-                                    <div class="form-floating mb-3 col" style="padding-left: 0">
+                                    <div class="form-floating mb-3 col" style="padding-left: 0; height: 50px;">
                                         <input type="text" class="form-control" id="first_name" placeholder="First name"
                                                name="first_name">
                                         <label for="first_name">First Name</label>
                                     </div>
-                                    <div class="form-floating mb-3 col" style="padding-left: 0; padding-right: 0;">
+                                    <div class="form-floating mb-3 col" style="padding-left: 0; padding-right: 0; height: 50px;">
                                         <input type="text" class="form-control" id="last_name" placeholder="Last name"
                                                name="last_name">
                                         <label for="last_name">Last Name</label>
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-floating mb-3">
+                            <div class="form-floating mb-3" style="height: 50px;">
                                 <input type="text" class="form-control rounded-3" id="username" name="username"
                                        placeholder="Username">
                                 <label for="username">Username</label>
                             </div>
-                            <div class="form-floating mb-3">
+                            <div class="form-floating mb-3" style="height: 50px;">
                                 <input type="email" class="form-control rounded-3" id="floatingInput"
                                        placeholder="name@example.com" name="email">
                                 <label for="floatingInput">Email address</label>
                             </div>
-                            <div class="form-floating mb-3">
+                            <div class="form-floating mb-3" style="height: 50px;">
                                 <input type="password" class="form-control rounded-3" id="floatingPassword"
                                        placeholder="Password" name="password">
                                 <label for="floatingPassword">Password</label>
+                            </div>
+
+                            <div class="text-black-50 form-floating mb-3">
+                                Contact information
+                            </div>
+
+                            <div class="form-floating mb-3" style="height: 50px;">
+                                <input type="text" class="form-control rounded-3" id="al1" name="al1"
+                                placeholder="Address line 1">
+                                <label for="al1">Address line 1</label>
+                            </div>
+                            <div class="form-floating mb-3" style="height: 50px;">
+                                <input type="text" class="form-control rounded-3" id="al2" name="al2"
+                                placeholder="Address line 2">
+                                <label for="al2">Address line 2 (Optional)</label>
+                            </div>
+                            <div class="form-floating mb-3" style="height: 50px;">
+                                <input type="text" class="form-control rounded-3" id="city" name="city"
+                                placeholder="City">
+                                <label for="city">City</label>
+                            </div>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="form-floating mb-3 col" style="padding-left: 0; height: 50px;">
+                                        <input type="text" class="form-control" id="state" placeholder="State"
+                                        name="state">
+                                        <label for="state">State</label>
+                                    </div>
+                                    <div class="form-floating mb-3 col" style="padding-left: 0; padding-right: 0; height: 50px;">
+                                        <input type="text" class="form-control" id="postal" placeholder="Postal code"
+                                        name="postal">
+                                        <label for="postal">Postal code</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control rounded-3" id="phone" name="phone"
+                                placeholder="Phone number">
+                                <label for="phone">Phone number</label>
                             </div>
                             <div><?=$this->displayErrors?></div>
                             <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Sign up</button>
