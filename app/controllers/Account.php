@@ -58,6 +58,10 @@ class Account extends Controller
 
     public function signupAction()
     {
+        if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) {
+            Router::redirect('');
+        }
+
         $validation = new Validate();
 
         if ($_POST) {

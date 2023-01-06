@@ -278,14 +278,14 @@ class Db
      * @param string $table The table you want to query
      * @param array $params The parameters to be passed to the query.
      *
-     * @return bool|stdClass The first result of the query.
+     * @return stdClass|array The first result of the query.
      */
-    public function findFirst(string $table, array $params = []): bool|stdClass
+    public function findFirst(string $table, array $params = []): stdClass|array
     {
         if ($this->_read($table, $params)) {
             return $this->first();
         }
-        return false;
+        return [];
     }
 
     /**
