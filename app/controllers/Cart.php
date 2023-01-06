@@ -30,7 +30,7 @@ class Cart extends Controller {
             $results = $db->call_procedure('view_cart', [Customer::currentLoggedInUser()->customer_id]);
 
             // TODO: implement the functionality to generate the html for the cart items
-            $this->view->itemsToDisplay['cart/items'] = $results;
+//            $this->view->itemsToDisplay['cart/items'] = $results;
         } else {
             Router::redirect('account/signin');
         }
@@ -50,6 +50,7 @@ class Cart extends Controller {
             header("HTTP/1.1 403 Unauthorized");
             exit;
         }
+        // TODO: implement the functionality to generate the html for the checkout page
 
         $this->view->setLayout('default');
         $this->view->render('cart/checkout');
