@@ -50,16 +50,18 @@
                     $id = $_SESSION[Customer::currentLoggedInUser()->getSessionName()];
 
                     $rows = $db->call_procedure('view_cart', [$id]);
+                    $total = 0;
+
 
                     foreach ($rows as $row) {
-
+                        $total+= $row->total;
                         ?>
                         <div class="card rounded-3 mb-4">
                             <div class="card-body p-4">
                                 <div class="row d-flex justify-content-between align-items-center">
                                     <div class="col-md-2 col-lg-2 col-xl-2">
 
-                                        <?php echo "<img height='64' width='64' src='" . $row->product_variant_img . "' />"; ?>
+                                        <?php echo "<img height='64' width='64' border-radius='15' src='" . $row->product_variant_img . "' />"; ?>
                                     </div>
                                     <div class="col-md-3 col-lg-3 col-xl-3">
                                         <p class="lead fw-normal mb-2"><?php echo $row->product_name ?></p>
@@ -72,7 +74,7 @@
                                     </div>
                                     <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
                                         <h5 class="mb-0"><?php echo $row->quantity ?>
-                                            <span>&#215;</span><?php echo $row->price ?></h5>
+                                            <span>&#215;</span>Rs:<?php echo $row->price ?></h5>
                                     </div>
                                     <div class="col-md-1 col-lg-1 col-xl-1 text-end remove"
                                          id="remove<?= $row->product_variant_id ?>">
@@ -104,7 +106,7 @@
                             </div>
                             <button
                                     class="form-control form-control-sm text-center "
-                                    style="height:50px;width:200px;pointer-events: none">total
+                                    style="height:50px;width:200px;pointer-events: none">Rs:<?php echo round($total, 2);  ?>
                             </button>
                         </div>
                     </div>
