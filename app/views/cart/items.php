@@ -51,6 +51,7 @@
                     $id = $_SESSION[Customer::currentLoggedInUser()->getSessionName()];
 
                     $rows = $db->call_procedure('view_cart', [2]);
+                    $i=count($rows);
                     $total = 0;
 
 
@@ -73,7 +74,7 @@
                                                 class="form-control form-control-sm text-center"
                                                 style="height:30px;width:60px"><?php echo $row->quantity ?></buton>
                                     </div>
-                                    <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                    <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1" style="font-family: sans-serif">
                                         <h5 class="mb-0"></span>Rs:<?php echo $row->price ?></h5>
                                     </div>
                                     <div class="col-md-1 col-lg-1 col-xl-1 text-end remove"
