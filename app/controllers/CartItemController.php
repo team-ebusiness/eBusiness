@@ -24,10 +24,10 @@ class CartItemController extends Controller {
                 $this->CartItemModel->updateQuantity($_SESSION[CURRENT_USER_SESSION_NAME]
                 ,$cartId,$_POST['variant_id'],(string)$updatedQuantity);
                 $_SESSION['msg'] = "Item added to the cart";
-                Router::redirect("Browsing");
+                Router::redirect("Browsing/variantDisplay/".Session::get("product_id"));
             }else{
                 $_SESSION['msg'] = "Not enough quantity available";
-                Router::redirect("Browsing");
+                Router::redirect("Browsing/variantDisplay/".Session::get("product_id"));
             }
         }else {
             if ($currentQuantity>=$customerQuantity) {
@@ -38,10 +38,10 @@ class CartItemController extends Controller {
                     'quantity' => $customerQuantity
                 ]);
                 $_SESSION['msg'] = "Item added to the cart";
-                Router::redirect("Browsing");
+                Router::redirect("Browsing/variantDisplay/".Session::get("product_id"));
             }else {
                 $_SESSION['msg'] = "Not enough quantity available";
-                Router::redirect("Browsing");
+                Router::redirect("Browsing/variantDisplay/".Session::get("product_id"));
             }
         }
 

@@ -23,6 +23,9 @@
 <?php $this->start('body'); ?>
     <h1> Variant Page </h1>
     <hr>
+    <?php if (isset($_SESSION['msg'])) {?>
+        <?= $_SESSION['msg'] ?>
+    <?php Session::delete('msg'); } ?>
     <div>
         <?= 'Product name : ' . $this->product->product_name ?>
         <hr>

@@ -34,6 +34,7 @@ class Browsing extends Controller {
     }
 
     public function variantDisplayAction($product_id){
+        Session::set('product_id',$product_id);
         $product = $this->ProductModel->getProduct($product_id);
         $details=$this->ProductVariantModel->getsubProductItems($product_id);
         //dnd($product);
