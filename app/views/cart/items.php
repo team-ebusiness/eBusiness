@@ -8,6 +8,7 @@
     <title>Checkout</title>
     <link href="<?= PROOT ?>css/custom.css" rel="stylesheet">
 
+<?php require_once 'app/views/layouts/header.php';?>
 
     <script>
         $(document).ready(function () {
@@ -32,13 +33,13 @@
 
 <?php $this->start('body'); ?>
 
-    <section class="h-100" style="background-color: #eee;">
-        <div class="container h-100 py-5">
+    <section class="h-100" style="background-color: #eee; height:100%">
+        <div class="container h-100 py-5 " ><div >" "</div>
             <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-10">
+                <div class="col-10 ">
 
                     <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h3 class="fw-normal mb-0 text-black">Shopping Cart</h3>
+                        <h3 class="fw-normal mb-0 text-black" >Shopping Cart</h3>
                         <div>
                             <p class="mb-0"><span class="text-muted">Sort by:</span> <a href="#!" class="text-body">price
                                     <i
@@ -49,7 +50,7 @@
                     $db = Db::getInstance();
                     $id = $_SESSION[Customer::currentLoggedInUser()->getSessionName()];
 
-                    $rows = $db->call_procedure('view_cart', [$id]);
+                    $rows = $db->call_procedure('view_cart', [2]);
                     $total = 0;
 
 
@@ -73,8 +74,7 @@
                                                 style="height:30px;width:60px"><?php echo $row->quantity ?></buton>
                                     </div>
                                     <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                        <h5 class="mb-0"><?php echo $row->quantity ?>
-                                            <span>&#215;</span>Rs:<?php echo $row->price ?></h5>
+                                        <h5 class="mb-0"></span>Rs:<?php echo $row->price ?></h5>
                                     </div>
                                     <div class="col-md-1 col-lg-1 col-xl-1 text-end remove"
                                          id="remove<?= $row->product_variant_id ?>">
@@ -125,7 +125,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </>
 
 
 <?php $this->end(); ?>
