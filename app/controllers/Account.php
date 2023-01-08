@@ -139,7 +139,7 @@ class Account extends Controller
             if ($validation->passed()) {
                 $db = DB::getInstance();
 
-                $db->call_procedure('create_customer', [
+                $db->call_procedure('insert_customer', [
                     'first_name' => Input::get('first_name'),
                     'last_name' => Input::get('last_name'),
                     'username' => Input::get('username'),

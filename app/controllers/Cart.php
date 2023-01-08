@@ -31,8 +31,21 @@ class Cart extends Controller
     public function checkoutAction()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $_SESSION['payment'] = true;
-            Router::redirect('cart/payment');
+            if (isset($_POST['action'])) {
+                $_SESSION['successful'] = true;
+                $date = date('Y-m-d H-i-s');
+
+                $db = Db::getInstance();
+                $db->query("insert into payment values (null, '{$date}', {$_POST['total']})");
+                $db->call_procedure('place_order', [
+                    $_SESSION[Customer::currentLoggedInUser()->getSessionName()],
+                    $_POST['date'],
+                    'on_delivery'
+                ]);
+            } else {
+                $_SESSION['payment'] = true;
+                Router::redirect('cart/payment');
+            }
         }
 
         if (!$_SESSION['checkout']) {
@@ -83,5 +96,11 @@ class Cart extends Controller
         $id = (int)substr($id, 6);
 
         $db->call_procedure('remove_item_from_cart', [$_SESSION[Customer::currentLoggedInUser()->getSessionName()], $id]);
+    }
+
+    public function on_deliveryAction()
+    {
+        $db = Db::getInstance();
+
     }
 }

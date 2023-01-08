@@ -50,7 +50,7 @@
                     $db = Db::getInstance();
                     $id = $_SESSION[Customer::currentLoggedInUser()->getSessionName()];
 
-                    $rows = $db->call_procedure('view_cart', [2]);
+                    $rows = $db->call_procedure('view_cart', [$id]);
                     $i=count($rows);
                     $total = 0;
 
