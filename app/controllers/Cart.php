@@ -30,7 +30,7 @@ class Cart extends Controller
 
     public function checkoutAction()
     {
-        if ($_POST) {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['payment'] = true;
             Router::redirect('cart/payment');
         }
