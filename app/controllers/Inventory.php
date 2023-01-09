@@ -11,6 +11,10 @@ class Inventory extends Controller
     }
 
     public function indexAction(){
+        if(!isset($_SESSION[CURRENT_USER_SESSION_NAME]) or $_SESSION[CURRENT_USER_SESSION_NAME]!='1'){
+            header("HTTP/1.1 403 Unauthorized");
+            exit;
+        }
         $details=[];
         $result = $this->ProductModel->find();
         foreach ($result as $value) {
