@@ -1,5 +1,5 @@
 <?php
-
+#[AllowDynamicProperties]
 class Customer extends Model
 {
     private string $_cookieName;
