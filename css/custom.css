@@ -152,3 +152,12 @@ i {
     display: inline-block;
     margin: 0 auto;
 }
+.empty-cart{
+    width:40vw;
+    margin-top:10%;
+    margin-left:auto;
+    margin-right:auto;
+    text-align: center;
+    font-family: 'Maison Neue';
+    font-weight: 300}
+
