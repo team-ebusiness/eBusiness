@@ -15,7 +15,7 @@
         margin: 1.25rem auto 0 auto}
 
     body{
-        background: #f2f2f2}
+        background:#eee}
 
 </style>
 <div class="empty-cart">
