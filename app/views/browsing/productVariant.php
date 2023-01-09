@@ -50,7 +50,6 @@
                 <?= 'Price : Rs.' . $value[0]->price ?><br>
                 <?= 'weight : ' . $value[0]->weight ?><br>
                 <?= 'Product Img : ' . $value[0]->product_variant_img ?><br>
-                <?= 'Available product quantity : ' . $value[0]->quantity ?><br>
                 <form action=<?= PROOT."CartItemController/addItem" ?> method="post">
                     <label for=Quantity> Quantity </label>
                     <input type="hidden" name="variant_id" value=<?= $key ?> >
