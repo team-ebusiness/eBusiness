@@ -1,4 +1,5 @@
 <?php
+#[AllowDynamicProperties]
 
 class MostSoldCats extends Model {
 

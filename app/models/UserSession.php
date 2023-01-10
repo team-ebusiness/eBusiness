@@ -1,4 +1,5 @@
 <?php
+#[AllowDynamicProperties]
 
 class UserSession extends Model {
     public function __construct() {

@@ -1,4 +1,5 @@
 <?php
+#[AllowDynamicProperties]
 
 class SubCategory extends Model{
     public function __construct(){

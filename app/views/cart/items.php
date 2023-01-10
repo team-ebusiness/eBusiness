@@ -137,6 +137,6 @@ $total = 0;
                 </div>
             </div>
         </div>
-    </>
+    </section>
 
 <?php $this->end(); ?>
