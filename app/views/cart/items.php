@@ -73,9 +73,12 @@ $total = 0;
                                     <div class="col-md-2 col-lg-2 col-xl-2">
 
                                         <?php echo "<img height='64' width='64' border-radius='15' src='" . $row->product_variant_img . "' />"; ?>
-                                    </div>
+                                        </div>
                                     <div class="col-md-3 col-lg-3 col-xl-3">
-                                        <p class="lead fw-normal mb-2"><?php echo $row->product_name ?></p>
+                                        <p class="lead fw-normal mb-2"><?php echo $row->product_name ?></p><span style="font-size:100%;color:yellow;">&starf;&starf;&starf;&starf;</span><span style="font-size:100%;border-color: black">&starf;<i class="review-count" style="font-size:12px ;font-style: normal;color: black"><p id= "<?php echo $total; ?>"><script>
+                                                    document.getElementById("<?php echo $total; ?>").innerHTML = Math.floor((Math.random() * 10000) + 1);
+                                                </script>
+                                                Reviews</i></span>
 
                                     </div>
                                     <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
