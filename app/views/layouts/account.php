@@ -15,7 +15,13 @@
 </head>
 
 <body style="background: rgba(34,35,52,1)">
-<?php require_once 'app/views/layouts/header.php';?>
+<?php
+if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) {
+    echo require_once "app/views/layouts/nav-loggedIn.php";
+} else {
+    echo require_once "app/views/layouts/nav-loggedOut.php";
+}
+?>
 <?= $this->content('body') ?>
 </body>
 
