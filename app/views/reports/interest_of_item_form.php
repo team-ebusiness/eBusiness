@@ -11,7 +11,9 @@
   <br>
 <form method="post" action="<?=PROOT?>reports/interest_of_item">
   <label><strong> Enter Product ID:</strong></label>
-  <input type="number" min="1" name="id">
+  <input type="number" min="1" name="id" placeholder="ID">
+  <label><strong> Enter Year:</strong></label>
+  <input type="number" min="2000" name="year" placeholder="year">
   <input type="submit" value="Search",name="Search">
 </form>
 <style>
@@ -32,7 +34,7 @@ th, td {
   //SELECT product_id,product_name FROM product ORDER by product_id
   //query for the following view
   
-  $products = $db->query('SELECT * FROM `product_details`')->results();
+  $products = $db->query('SELECT * FROM product ORDER by product_id')->results();
   echo '<table style="width: 30%; height: 100%">';
   echo '<tr border=2px>
         <th>Product ID</th>

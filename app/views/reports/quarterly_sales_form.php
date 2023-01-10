@@ -20,7 +20,7 @@ th, td {
   <br>
 <form method="post" action="<?=PROOT?>reports/quarterly_sales">
   <label><strong> Enter year:</strong></label>
-  <input type="number" name="year" min="2000" max="2100" required>
+  <input type="number" name="year" min="2000" max="2100" required placeholder="year">
   <input type="submit" value="Search",name="Search">
 </form>
 <br>

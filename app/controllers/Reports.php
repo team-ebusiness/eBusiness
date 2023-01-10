@@ -60,7 +60,8 @@ class Reports extends Controller {
     public function interest_of_itemAction(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $id = $_POST['id'];
-            $interesOfItem = $this->InterestOfItemModel->getInterestOfItem($id);
+            $year = $_POST['year'];
+            $interesOfItem = $this->InterestOfItemModel->getInterestOfItem($id,$year);
             $this->view->interesOfItem = $interesOfItem;
             $this->view->render('reports/interest_of_item_view');}
            else {

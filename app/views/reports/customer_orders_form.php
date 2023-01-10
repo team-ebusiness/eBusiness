@@ -11,7 +11,7 @@
   <br>
 <form method="post" action="<?=PROOT?>reports/customer_orders">
   <label><strong> Enter User ID:</strong></label>
-  <input type="number" name="id" min="1" required>
+  <input type="number" name="id" min="1" required placeholder="ID">
   <input type="submit" value="Search",name="Search">
 </form>
 <style>
