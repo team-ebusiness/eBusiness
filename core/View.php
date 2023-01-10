@@ -1,4 +1,5 @@
 <?php
+#[AllowDynamicProperties]
 
 class View {
     protected string $_head, $_body, $_outputBuffer;

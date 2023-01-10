@@ -1,4 +1,5 @@
 <?php
+#[AllowDynamicProperties]
 
 class productSubLink extends Model{
     public function __construct(){

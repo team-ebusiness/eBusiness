@@ -1,4 +1,5 @@
 <?php
+#[AllowDynamicProperties]
 
 class CartItem extends Model{
     public function __construct(){
@@ -7,11 +8,9 @@ class CartItem extends Model{
     }
 
     public function getEmptyCart($currentUserId){
-        $cart= $this->_db->findFirst('cart',[
-            'conditions' => 'customer_id=? and cart_status=?' ,
-            'bind' => [$currentUserId,0]
-        ]);
-        return $cart->cart_id;
+        $sql= 'select getEmptyCartId(?) AS CartId;';
+        $values=[$currentUserId];
+        return $this->query($sql, $values)->results()[0]->CartId;
     }
 
     public function getCartProducts($currentUserId,$cartid,$variant_id){

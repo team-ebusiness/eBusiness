@@ -23,6 +23,9 @@
 <?php $this->start('body'); ?>
     <h1> Variant Page </h1>
     <hr>
+    <?php if (isset($_SESSION['msg'])) {?>
+        <?= $_SESSION['msg'] ?>
+    <?php Session::delete('msg'); } ?>
     <div>
         <?= 'Product name : ' . $this->product->product_name ?>
         <hr>
@@ -47,6 +50,7 @@
                 <?= 'Price : Rs.' . $value[0]->price ?><br>
                 <?= 'weight : ' . $value[0]->weight ?><br>
                 <?= 'Product Img : ' . $value[0]->product_variant_img ?><br>
+                <?= 'Availabel quantity : ' . $value[0]->quantity ?><br>
                 <form action=<?= PROOT."CartItemController/addItem" ?> method="post">
                     <label for=Quantity> Quantity </label>
                     <input type="hidden" name="variant_id" value=<?= $key ?> >

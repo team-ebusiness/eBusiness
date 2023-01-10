@@ -9,9 +9,6 @@
 <h1> Browsing Page </h1>
 <hr>
 <div>
-    <?php if (isset($_SESSION['msg'])) {?>
-        <?= $_SESSION['msg'] ?>
-    <?php Session::delete('msg'); } ?>
     <?php foreach ($this->details as $key => $value) { ?>
         <div>
             <div>
