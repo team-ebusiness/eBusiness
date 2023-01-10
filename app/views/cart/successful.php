@@ -1,6 +1,7 @@
 <?php $this->setSiteTitle('Third Tools'); ?>
 <?php $this->start('head'); ?>
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="<?= PROOT ?>css/custom.css?v=<?= time() ?>">
 <?php $this->end(); ?>
     <style>
         body {
@@ -16,6 +17,7 @@
         </div>
         <h1>Success</h1>
         <p>We received your purchase request;<br/> we'll be in touch shortly!</p>
+        <h6>Redirect in 5s...</h6>
     </div>
 
 <?php $this->end(); ?>

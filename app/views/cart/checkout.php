@@ -146,7 +146,7 @@ if ($is_main_city) {
                             <p>Estimated delivery date</p>
                         </div>
                         <div class="col">
-                            <p class="text-end"><i class="fa fa-euro"></i><?= $date ?></p>
+                            <p class="text-end"><i class="fa fa-euro"></i><?= date('Y-m-d', $date) ?></p>
                         </div>
                     </div>
 
