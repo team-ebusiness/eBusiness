@@ -1,4 +1,4 @@
-<?php $this->setSiteTitle('header'); ?>
+<?php $this->setSiteTitle('Checkout'); ?>
 
 <?php
 $db = Db::getInstance();
@@ -67,14 +67,14 @@ if ($is_main_city) {
         $('#on-delivery').on('click', function () {
             $.ajax({
                 type: 'post',
-                url: '<?= PROOT ?>/cart/checkout',
+                url: '<?= PROOT ?>cart/checkout',
                 data: {
                     action: 'on_delivery',
                     total: <?= $total ?>,
                     date: '<?= date('Y-m-d H-i-s', $date) ?>'
                 },
                 success: function (res) {
-                    window.location.href = '<?= PROOT ?>/cart/successful'
+                    window.location.href = '<?= PROOT ?>cart/successful'
                 },
                 error: function (res) {
                     alert(res);

@@ -18,7 +18,7 @@
     </div>
     <div class="col-md-7 home-img">
         <br><br>
-        <img class="img" src="images/img1.png">
+        <img class="img" src="<?= PROOT ?>images/img1.png">
     </div>
 </div>
 

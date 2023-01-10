@@ -14,14 +14,7 @@
     <script src="<?= PROOT ?>js/bootstrap.min.js" charset="utf-8"></script>
 </head>
 
-<body style="background: rgba(34,35,52,1)">
-<?php
-if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) {
-    echo require_once "app/views/layouts/nav-loggedIn.php";
-} else {
-    echo require_once "app/views/layouts/nav-loggedOut.php";
-}
-?>
+<body style="background: rgb(239,239,239); font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
 <?= $this->content('body') ?>
 </body>
 

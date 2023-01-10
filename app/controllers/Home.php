@@ -11,7 +11,7 @@ class Home extends Controller
         $this->load_model('ProductSubLink');
         $this->load_model('ProductVariant');
         $this->load_model('Product');
-        $this->view->setLayout('default3');
+        $this->view->setLayout('default1');
     }
 
     public function indexAction()
@@ -26,7 +26,7 @@ class Home extends Controller
         }
 
         $this->view->details = $details;
-        $this->view->setLayout('default3');
+        $this->view->setLayout('default1');
         $this->view->render('home/index');
     }
 
@@ -46,7 +46,7 @@ class Home extends Controller
         foreach ($details as $key => $value) {
             $temp = [];
             foreach ($value as $id => $val) {
-                $temp[] =  $val->variant_name . " : " . $val->variant_val_name;
+                $temp[] = $val->variant_name . " : " . $val->variant_val_name;
             }
             $variant_display[$key] = join(" , ", $temp);
         }
@@ -54,5 +54,23 @@ class Home extends Controller
         $this->view->details = $details;
         $this->view->variant_display = $variant_display;
         $this->view->render('browsing/productVariant');
+    }
+
+    public function searchAction()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            $search = $_REQUEST['term'];
+
+            $db = Db::getInstance();
+            $sql = "SELECT * FROM product WHERE product_name LIKE '%$search%'";
+            $results = $db->query($sql)->results();
+
+            $html = "";
+
+            foreach ($results as $result) {
+                $html .= "<p  id='" . PROOT . "browsing/variantDisplay/" . $result->product_id . "' class='list-group-item list-group-item-action border-1'>" . $result->product_name . "</p>";
+            }
+            echo $html;
+        }
     }
 }

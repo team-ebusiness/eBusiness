@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
 
-<?php require_once 'app/views/layouts/header.php';
+<?php // require_once 'app/views/layouts/header.php';
 $db = Db::getInstance();
 $id = $_SESSION[Customer::currentLoggedInUser()->getSessionName()];
 
