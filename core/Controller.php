@@ -1,4 +1,5 @@
 <?php
+#[AllowDynamicProperties]
 
 class Controller extends Application {
     protected string $_controller, $_action;
