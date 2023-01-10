@@ -113,11 +113,11 @@
               fill="none"></path>
     </svg>
 
-    <h3>Your Cart Is Empty</h3>
+    <h3>Your Cart Is Empty</h3><p>&nbsp;</p>
 
 
     <button id="pay-btn" class="btn btn-outline-dark w-auto " type="submit"
-            style="background: #ffc720;border: none;text-align: center;font-size: small">Go Back To Shopping
+            style="background: #ffc720;border: none;text-align: center;">Go Back To Shopping
     </button>
 
 
