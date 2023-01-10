@@ -1,0 +1,27 @@
+<?php $this->setSiteTitle('1st Report'); ?>
+
+<?php $this->start('head'); ?>
+<style>
+table, th, td {
+  border: 1px solid white;
+  border-collapse: collapse;
+}
+th, td {
+  background-color: #96D4D4; align-self: auto;
+}
+</style>
+
+<?php $this->end(); ?>
+
+<?php $this->start('body'); ?>
+<center>
+  <h1> Quarterly Sales Report</h1>
+<form method="post" action="<?=PROOT?>reports/quarterly_sales">
+  <label>Enter year:</label>
+  <input type="number" name="year" min="2000" max="2100" required>
+  <input type="submit" value="Search",name="Search">
+</form>
+<br>
+
+</center>
+<?php $this->end(); ?>

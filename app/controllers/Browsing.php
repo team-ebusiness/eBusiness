@@ -37,7 +37,6 @@ class Browsing extends Controller {
         Session::set('product_id',$product_id);
         $product = $this->ProductModel->getProduct($product_id);
         $details=$this->ProductVariantModel->getsubProductItems($product_id);
-        //dnd($product);
         $variant_display = [];
         foreach ($details as $key => $value) {
             $temp = [];
@@ -46,6 +45,7 @@ class Browsing extends Controller {
             }
             $variant_display[$key] = join(" , ", $temp);
         }
+
         $this->view->product=$product;
         $this->view->details=$details;
         $this->view->variant_display=$variant_display;
