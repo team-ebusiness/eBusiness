@@ -1,59 +1,180 @@
-.h4-title-card {
-    color: antiquewhite;
-
-    border: 3px solid blueviolet;
-    padding: 2px;
-
-    width: 50%;
-    height: 45px;
-
+.remove-btn {
+    max-width: 22px;
     display: block;
     margin-left: auto;
-    margin-right: auto;
 }
 
-#signin_form {
-    width: 50%; align-items: center; padding: 10px; display: block; margin-left: auto; margin-right: auto;
+.remove-btn:hover {
+    background-color: rgba(255, 0, 0, 0.65);
+    border-radius: 15px 8px 2px 8px;
+    cursor: pointer;
 }
 
-.form-group {
-    padding: 5px;
+* {
+    margin: 0;
+    padding: 0;
 }
 
-.center-block {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+body {
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(-40deg, white, lightgrey);
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
 }
 
-.divider-text {
+#wrapper {
+    height: 480px;
+    width: 700px;
+    background: #fff;
+    border: 1px solid grey;
+    border-radius: 10px;
+    margin: 3em auto 0 auto;
+    overflow: hidden;
+    box-shadow: 0px 2px 25px #000;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+}
+
+.row:nth-of-type(1) .col-xs-5 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #e6e6e6;
+    /*   border:solid 1px transparent; */
+    border-radius: 4px;
+    margin: 1em 5px;
+}
+
+.row:nth-of-type(1) .col-xs-5 #cards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.row:nth-of-type(1) .col-xs-5 #cards img {
+    width: 100px;
+    height: 100px;
+}
+
+.row:nth-of-type(2) .col-xs-5 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-basis: 45%;
+}
+
+.row:nth-of-type(2) .col-xs-5 input {
+    border: 2px solid lightgrey;
+    height: 35px;
+    border-radius: 10px;
+    padding-left: 10px;
+}
+
+.row .col-xs-5 input:focus, .row:nth-of-type(3) .col-xs-2 input:focus {
+    border-color: green;
+    outline: 0;
+}
+
+label {
     position: relative;
-    text-align: center;
-    margin-top: 15px;
-    margin-bottom: 15px;
 }
-.divider-text span {
-    padding: 7px;
-    font-size: 12px;
-    position: relative;
-    z-index: 2;
-}
-.divider-text:after {
-    content: "";
+
+.fa {
     position: absolute;
-    width: 100%;
-    border-bottom: 1px solid #ddd;
-    top: 55%;
-    left: 0;
-    z-index: 1;
+    right: 25px;
+    bottom: 10px;
 }
 
-.btn-facebook {
-    background-color: #405D9D;
+.row-three {
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+    align-content: space-between;
+    margin: 2em 1em 2.4em 1em;
+}
+
+.row:nth-of-type(3) .col-xs-2 {
+    flex-basis: 50%;
+}
+
+.row:nth-of-type(3) .col-xs-5 {
+    flex-basis: 40%;
+    align-items: baseline;
+}
+
+.row:nth-of-type(3) .col-xs-2 input {
+    height: 35px;
+    border: 2px solid lightgrey;
+    border-radius: 10px;
+    padding-left: 10px;
+}
+
+.row:nth-of-type(3) .col-xs-5 .small {
+    font-size: .70em;
+}
+
+footer {
+    height: 80px;;
+    background: #e6e6e6;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer .btn {
+    margin: 50px 15px 55px 15px;
+    border-radius: 20px;
+    padding: .65em 1.6em;
+}
+
+footer :nth-child(1) {
+    background-color: #fff;
+    color: #f62f5e;
+}
+
+footer :nth-child(2) {
+    background-color: #f62f5e;
     color: #fff;
 }
-.btn-twitter {
-    background-color: #42AEEC;
-    color: #fff;
+
+.col-xs-5.highlight {
+    border: solid 1px blue;
+}
+
+h1 {
+    color: #88B04B;
+    font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+    font-weight: 900;
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+p {
+    color: #404F5E;
+    font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+    font-size: 20px;
+    margin: 0;
+}
+
+i {
+    color: #9ABC66;
+    font-size: 100px;
+    line-height: 200px;
+    margin-left: -15px;
+}
+
+.card {
+    background: white;
+    padding: 60px;
+    border-radius: 4px;
+    box-shadow: 0 2px 3px #C8D0D8;
+    display: inline-block;
+    margin: 0 auto;
 }
 
