@@ -1,8 +1,7 @@
 <div class="container-fluid p-0">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="<?= PROOT ?>">E-Shop</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -12,8 +11,7 @@
                     <a class="nav-link" href="<?= PROOT ?>/browsing">Products <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Categories
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -28,21 +26,19 @@
                             $details[$categoryId] = [$categoryName, $subCategoryItems];
                         }
                         foreach ($details as $key => $value) { ?>
-                            <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" data-toggle="dropdown"
-                                                            href="#"><?= $value[0] ?><br></a>
-                            <ul class="dropdown-menu">
-                                <?php foreach ($value[1] as $id => $val) { ?>
-                                    <div class="sub1">
-                                        <a class="dropdown-item sub"
-                                           href=<?= PROOT . "Home/productDisplay/" . $val->sub_category_id ?>>
-                                            <?= $val->sub_category_name ?><br>
-                                        </a>
-                                    </div>
+                            <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" data-toggle="dropdown" href="#"><?= $value[0] ?><br></a>
+                                <ul class="dropdown-menu">
+                                    <?php foreach ($value[1] as $id => $val) { ?>
+                                        <div class="sub1">
+                                            <a class="dropdown-item sub" href=<?= PROOT . "Home/productDisplay/" . $val->sub_category_id ?>>
+                                                <?= $val->sub_category_name ?><br>
+                                            </a>
+                                        </div>
 
-                                <?php } ?>
-                            </ul>
+                                    <?php } ?>
+                                </ul>
                             </li><?php
-                        } ?>
+                                } ?>
                     </ul>
                 </li>
 
@@ -51,9 +47,7 @@
                         <form class="form-inline my-2 my-lg-0">
                             <div class="row">
                                 <div class="search-box col" style="padding-right: 5px;">
-                                    <input id="search-field" autocomplete="off" class="form-control mr-sm-2"
-                                           type="text"
-                                           placeholder="Search for Products..">
+                                    <input id="search-field" autocomplete="off" class="form-control mr-sm-2" type="text" placeholder="Search for Products..">
                                     <div class="result"></div>
                                 </div>
                                 <div class="col align-items-start" style="padding-left: 0;">
@@ -68,23 +62,19 @@
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="fa-solid fa-user"></i></a>
-                </li>
-                <li class="nav-item">
                     <a class="btn" href="<?= PROOT ?>cart/items" role="button">
                         <span class="material-icon"><i class="fa-solid fa-cart-shopping"></i></span>
                         <span class="icon-button__badge"><?php // require_once 'app/views/layouts/header.php';
-                            $db = Db::getInstance();
-                            $id = $_SESSION[Customer::currentLoggedInUser()->getSessionName()];
+                                                            $db = Db::getInstance();
+                                                            $id = $_SESSION[Customer::currentLoggedInUser()->getSessionName()];
 
-                            $rows = $db->call_procedure('view_cart', [$id]);
-                            echo count($rows);
-                            ?></span>
+                                                            $rows = $db->call_procedure('view_cart', [$id]);
+                                                            echo count($rows);
+                                                            ?></span>
                     </a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <?php
                         $user_id = Customer::currentLoggedInUser()->customer_id;
                         $user = Db::getInstance()->query("SELECT * FROM customer WHERE customer_id = $user_id")->results()[0];
