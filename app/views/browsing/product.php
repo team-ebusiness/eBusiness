@@ -45,10 +45,10 @@
             <?php foreach ($this->details as $value) { ?>
                 <div class='col-md-3'>
                     <div class='card border-warning mb-3'>
-                        <a href=<?= PROOT . 'home/variantDisplay/' . $value[0]->product_id ?>>
+                        <a href=<?= PROOT . 'browsing/variantDisplay/' . $value[0]->product_id ?>>
                             <img class="card-img-top1" src='<?= PROOT . $value[0]->product_img ?>'></a>
                         <div class="card-body">
-                            <a class="link1" href=<?= PROOT . 'home/variantDisplay/' . $value[0]->product_id ?>>
+                            <a class="link1" href=<?= PROOT . 'browsing/variantDisplay/' . $value[0]->product_id ?>>
                                 <h5 class="card-title"><?= $value[0]->product_name ?></h5>
                             </a>
                         </div>
