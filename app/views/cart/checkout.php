@@ -152,16 +152,8 @@ if ($is_main_city) {
 
                     <hr style="color: rgb(0,0,0);"/>
 
-                    <div class="row">
-                        <div class="col">
-                            <p style="font-size: 18px;"><strong>Total</strong></p>
-                        </div>
-                        <div class="col">
-                            <p class="text-end" style="font-size: 18px;"><i class="fa fa-euro"></i></p>
-                        </div>
-                    </div>
 
-                    <hr style="color: rgb(0,0,0);"/>
+
                     <div class="row">
                         <div class="col-12 col-sm-6">
                             <p class="hidden">&nbsp;</p>

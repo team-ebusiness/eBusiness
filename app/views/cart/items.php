@@ -32,7 +32,7 @@ $total = 0;
                     }
                 });
             });
-            if (<?= $i ?> == 0) {
+            if (<?= $i ?> === 0) {
                 $('#cart-emp').toggle();
             } else {
                 $('#cart-emp2').toggle();
