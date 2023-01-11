@@ -46,6 +46,10 @@
 </style>
 
 <?php $this->start('body'); ?>
+<?php if (isset($_SESSION['msg'])) { ?>
+    <?= $_SESSION['msg'] ?>
+<?php Session::delete('msg');
+} ?>
 <div class="row">
     <div class=" col-md-8 header-bar p-0">
         <p class="header line1">Best Of All </p>
