@@ -26,4 +26,7 @@ th, td {
 <br>
 
 </center>
+    <br>
+    <div>
+        <a href="index"><button style="width: 100px;margin-left: 50%">Back</button></a><div>
 <?php $this->end(); ?>

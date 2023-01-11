@@ -7,14 +7,14 @@
 <?php $this->start('body'); ?>
 <center>
   <br>
-  <h1> Customer Orders Report</h1>
+    <h1> Customer Orders Report</h1>
+
   <br>
 <form method="post" action="<?=PROOT?>reports/customer_orders">
   <label><strong> Enter User ID:</strong></label>
   <input type="number" name="id" min="1" required placeholder="ID">
   <input type="submit" value="Search",name="Search">
-</form>
-<style>
+    </form><style>
 table, th, td {
   border: 1.5px solid black;
   border-collapse: collapse;
@@ -68,4 +68,7 @@ th, td {
 ?>
 </table>
 </center>
+    <br>
+    <div>
+        <a href="index"><button style="width: 100px;margin-left: 50%">Back</button></a><div>
 <?php $this->end(); ?>

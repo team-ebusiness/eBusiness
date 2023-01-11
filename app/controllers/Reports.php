@@ -15,6 +15,7 @@ class Reports extends Controller {
         $this->load_model('MostSoldCats');
         $this->load_model('InterestOfItem');
         $this->load_model('CustomerOrders');
+
         
         $this->view->setLayout('default');
         
