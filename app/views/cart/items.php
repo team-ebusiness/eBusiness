@@ -44,6 +44,20 @@ $total = 0;
         });
     </script>
 
+    <style>
+        .remove-btn {
+            max-width: 22px;
+            display: block;
+            margin-left: auto;
+        }
+
+        .remove-btn:hover {
+            background-color: rgba(255, 0, 0, 0.65);
+            border-radius: 15px 8px 2px 8px;
+            cursor: pointer;
+        }
+    </style>
+
 <?php $this->end(); ?>
 
 <?php $this->start('body'); ?>
