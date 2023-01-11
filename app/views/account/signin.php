@@ -32,12 +32,17 @@
                             <input type="checkbox" class="form-check-input text-center" id="checkbox" name="rememberMe">
                             <label class="form-check-label" for="checkbox">Remember me</label>
                         </div>
-                        <div><?=$this->displayErrors?></div>
-                        <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Sign in</button>
+                        <div><?= $this->displayErrors ?></div>
+                        <button class="w-100 mb-2 btn btn-lg rounded-3 btn-outline-light" type="submit"
+                                style="background: #ffc720;">Sign in
+                        </button>
                     </form>
+                    <div class="text-center">
+                        <a href="<?= PROOT ?>account/signup" class="text-decoration-none">Don't have an account? Sign up
+                            here</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<?php $this->end(); ?>
+    <?php $this->end(); ?>

@@ -111,10 +111,10 @@ class Validate
 
     public function displayErrors(): string
     {
-        $html = '<ul class="bg-danger" style="border-radius: 5px;">';
+        $html = '<ul class="bg-light" style="border-radius: 5px;">';
         foreach ($this->_errors as $error) {
             if (is_array($error)) {
-                $html .= '<li style="padding: 2px;">' . $error[0] . '</li>';
+                $html .= '<li class="text-danger" style="padding: 2px;">' . $error[0] . '</li>';
                 $html .= '<script>jQuery("document").ready(function(){jQuery("#' . $error[1] . '").parent().closest("div").addClass("has-error");});</script>';
             } else {
                 $html .= '<li>' . $error . '</li>';
