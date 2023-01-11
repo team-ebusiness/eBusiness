@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
 
-<?php require_once 'app/views/layouts/header.php';
+<?php // require_once 'app/views/layouts/header.php';
 $db = Db::getInstance();
 $id = $_SESSION[Customer::currentLoggedInUser()->getSessionName()];
 
@@ -43,6 +43,20 @@ $total = 0;
             });
         });
     </script>
+
+    <style>
+        .remove-btn {
+            max-width: 22px;
+            display: block;
+            margin-left: auto;
+        }
+
+        .remove-btn:hover {
+            background-color: rgba(255, 0, 0, 0.65);
+            border-radius: 15px 8px 2px 8px;
+            cursor: pointer;
+        }
+    </style>
 
 <?php $this->end(); ?>
 

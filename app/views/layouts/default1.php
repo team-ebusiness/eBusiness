@@ -6,100 +6,84 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <link rel='stylesheet' href="<?= PROOT ?>css/custom.css?v=<?php echo time(); ?>" media="screen" title="no title" charset="utf-8">
+    <link rel='stylesheet' href="<?= PROOT ?>css/custom1.css?v=<?php echo time(); ?>" media="screen" title="no title" charset="utf-8">
+    <link rel='stylesheet' href="<?= PROOT ?>css/custom1.css?v=<?php echo time(); ?>" media="screen" title="no title" charset="utf-8">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="<?= PROOT ?>js/jquery-2.2.4.min.js" charset="utf-8"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-
     <?= $this->content('head'); ?>
+    <style>
+        /* Formatting search box */
 
+        .result {
+            position: absolute;
+            z-index: 999;
+            top: 100%;
+            left: 0;
+        }
+
+        .result {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Formatting result items */
+        .result p {
+            margin: 0;
+            padding: 7px 10px;
+            border: 1px solid #CCCCCC;
+            border-top: none;
+            cursor: pointer;
+        }
+
+        .result p:hover {
+            background: #f2f2f2;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function() {
+            $('.search-box input[type="text"]').on("keyup input", function() {
+                var inputVal = $(this).val();
+                var resultDropdown = $(this).siblings(".result");
+                if (inputVal.length) {
+                    $.get("<?= PROOT ?>/home/search", {
+                        term: inputVal
+                    }).done(function(data) {
+                        resultDropdown.html(data);
+                    });
+                } else {
+                    resultDropdown.empty();
+                }
+            });
+
+            $(document).on("click", ".result p", function() {
+                $(this).parents(".search-box").find('input[type="text"]').val($(this).text());
+                $(this).parents(".search-box").find('input[type="text"]').attr('url', $(this).attr('id'));
+                $(this).parent(".result").empty();
+            });
+
+            $('#search-btn').on('click', function() {
+                alert($('#search-field').attr('url'));
+                window.location.href = $('#search-field').attr('url');
+            })
+        });
+    </script>
 </head>
 
 <body>
-    <div class="container-fluid p-0">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">E-Shop</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="<?= PROOT ?>">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= PROOT ?>browsing">Products</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Categories
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <?php
-                            $home = new Home('Home', '');
-                            $details = [];
-                            $categoryItems = $home->CategoryModel->find();
-                            foreach ($categoryItems as $value) {
-                                $categoryId = $value->category_id;
-                                $categoryName = $value->category_name;
-                                $subCategoryItems = $home->SubCategoryModel->getSubCategories($categoryId);
-                                $details[$categoryId] = [$categoryName, $subCategoryItems];
-                            }
-                            foreach ($details as $key => $value) { ?>
-                                <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" data-toggle="dropdown" href="#"><?= $value[0] ?><br></a>
-                                    <ul class="dropdown-menu">
-                                        <?php foreach ($value[1] as $id => $val) { ?>
-                                            <div class="sub1">
-                                                <a class="dropdown-item sub" href=<?= PROOT . "Home/productDisplay/" . $val->sub_category_id ?>>
-                                                    <?= $val->sub_category_name ?><br>
-                                                </a>
-                                            </div>
-
-                                        <?php } ?>
-                                    </ul>
-                                </li><?php
-                                    } ?>
-                        </ul>
-                    </li>
-
-
-                    <li class="form-action">
-                        <div>
-                            <form class="form-inline my-2 my-lg-0">
-                                <input class="form-control mr-sm-2" type="search" placeholder="Search for Products" aria-label="Search">
-                                <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
-                            </form>
-                        </div>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa-solid fa-user"></i></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-light" href="<?= PROOT ?>account/signin" role="button">Sign In</a>
-
-                    </li>
-                    <li class="nav-item">
-                        <a class="btn btn-light" href="<?= PROOT ?>account/signup" role="button">Sign Up</a>
-                    </li>
-
-                </ul>
-
-            </div>
-        </nav>
-
-    </div>
-
+    <?php
+    if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) {
+        require_once "app/views/layouts/nav-loggedIn.php";
+    } else {
+        require_once "app/views/layouts/nav-loggedOut.php";
+    }
+    ?>
     <?= $this->content('body'); ?>
 </body>
 

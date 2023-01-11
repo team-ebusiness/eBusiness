@@ -87,7 +87,7 @@ class Cart extends Controller
 
         $this->view->setLayout('default');
         $this->view->render('cart/successful');
-        header("Refresh:5; url=" . PROOT . "home/index");
+        header("Refresh:5; url=" . PROOT);
     }
 
     public function removeAction()
