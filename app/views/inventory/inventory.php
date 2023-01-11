@@ -44,7 +44,8 @@
                                 <div class="col-md-2 col-lg-2 col-xl-4" >
 
                                     Price :<i style="font-weight: lighter;font-style: normal"> Rs. <?php echo $y[0]->price ?></i><br>
-                                    Remain quantity :<i style="font-weight: lighter;font-style: normal"><?php echo $y[0]->quantity ?></i>
+                                    Remain quantity :<i style="font-weight: lighter;font-style: normal"><?php echo $y[0]->quantity ?></i><br>
+                                    SKU :<i style="font-weight: lighter;font-style: normal"><?php echo $y[0]->SKU ?></i>
                                 </div>
 
                         </div>

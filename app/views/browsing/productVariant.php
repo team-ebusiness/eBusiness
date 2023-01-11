@@ -94,7 +94,8 @@
                                     <?= $y->variant_name . ' : ' . $y->variant_val_name ?><br>
                                 <?php } ?>
                                 <?= 'weight : ' . $value[0]->weight ?><br>
-                                <?= 'Price : Rs.' . $value[0]->price ?><br><br>
+                                <?= 'Price : Rs.' . $value[0]->price ?><br>
+                                <?= 'Available quantity : ' . $value[0]->quantity ?><br><br>
                                 <form class="add-cart" action=<?= PROOT . "CartItemController/addItem" ?> method="post">
                                     <label for=Quantity> Quantity </label>
                                     <input type="hidden" name="variant_id" value=<?= $key ?>>
