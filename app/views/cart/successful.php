@@ -1,4 +1,4 @@
-<?php $this->setSiteTitle('Third Tools'); ?>
+<?php $this->setSiteTitle('Successful'); ?>
 <?php $this->start('head'); ?>
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="<?= PROOT ?>css/custom.css?v=<?= time() ?>">

@@ -51,7 +51,7 @@
                                     <div class="result"></div>
                                 </div>
                                 <div class="col align-items-start" style="padding-left: 0;">
-                                    <button id="search-btn" class="btn btn-outline-warning my-2 my-sm-0" type="submit">
+                                    <button id="search-btn" class="btn btn-outline-warning my-2 my-sm-0" type="button">
                                         Search
                                     </button>
                                 </div>

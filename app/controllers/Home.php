@@ -68,7 +68,7 @@ class Home extends Controller
             $html = "";
 
             foreach ($results as $result) {
-                $html .= "<p  id='" . PROOT . "browsing/variantDisplay/" . $result->product_id . "' class='list-group-item list-group-item-action border-1'>" . $result->product_name . "</p>";
+                $html .= "<p  id='product" . $result->product_id . "' class='list-group-item list-group-item-action border-1'>" . $result->product_name . "</p>";
             }
             echo $html;
         }

@@ -39,7 +39,7 @@ $total = 0;
             }
 
             $('#pay-btn').on('click', function () {
-                window.location.href = "<?= PROOT ?>home";
+                window.location.href = "<?= PROOT ?>browsing/variantDisplay/1";
             });
         });
     </script>
@@ -62,7 +62,7 @@ $total = 0;
 
 <?php $this->start('body'); ?>
 
-<?php require_once 'app/views/layouts/empty_cart.php' ?>;
+<?php require_once 'app/views/layouts/empty_cart.php' ?>
     <section id="cart-emp" class="h-100" style="background-color: #eee; height:100%">
         <div class="container h-100 py-5 ">
             <div>&nbsp;</div>
