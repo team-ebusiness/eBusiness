@@ -80,16 +80,17 @@ $total = 0;
                     <?php
                     foreach ($rows as $row) {
                         $total += $row->total;
+                        $id_product = $row->product_id;
                         ?>
                         <div class="card rounded-3 mb-4">
                             <div class="card-body p-4">
                                 <div class="row d-flex justify-content-between align-items-center">
                                     <div class="col-md-2 col-lg-2 col-xl-2">
-
-                                        <?php echo "<img height='64' width='64' border-radius='15' src='" . $row->product_variant_img . "' />"; ?>
-                                        </div>
+                                        <a href="<?= PROOT ?>browsing/variantDisplay/<?php echo $id_product; ?>">
+                                        <?php echo "<img height='64' width='64' border-radius='15' src='" . $row->product_variant_img . "' />"; ?></a>
+                                    </div>
                                     <div class="col-md-3 col-lg-3 col-xl-3">
-                                        <p class="lead fw-normal mb-2"><?php echo $row->product_name ?></p><span style="font-size:100%;color:yellow;">&starf;&starf;&starf;&starf;</span><span style="font-size:100%;border-color: black">&starf;<i class="review-count" style="font-size:12px ;font-style: normal;color: black"><p id= "<?php echo $total; ?>"><script>
+                                        <p class="lead fw-normal mb-2"><?php echo $row->product_name ?>  <?php echo $row->product_id ?></p><span style="font-size:100%;color:yellow;">&starf;&starf;&starf;&starf;</span><span style="font-size:100%;border-color: black">&starf;<i class="review-count" style="font-size:12px ;font-style: normal;color: black"><p id= "<?php echo $total; ?>"><script>
                                                     document.getElementById("<?php echo $total; ?>").innerHTML = Math.floor((Math.random() * 10000) + 1);
                                                 </script>
                                                 Reviews</i></span>
