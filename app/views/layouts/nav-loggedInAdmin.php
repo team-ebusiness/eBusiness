@@ -88,6 +88,14 @@
                         <a class="dropdown_item sub" href=<?= PROOT . "Account/signout" ?>>
                             Sign Out<br>
                         </a>
+                        <a class="dropdown_item sub" href=<?= PROOT . "Inventory" ?>>
+                            Inventory<br>
+                        </a>
+                        <a class="dropdown_item sub" href="#" ?>>
+                            Reports<br>
+                        </a>
+
+
                     </div>
                 </li>
 
