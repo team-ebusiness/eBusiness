@@ -18,6 +18,13 @@
         text-decoration: none !important;
         cursor: pointer;
     }
+
+    .card1 {
+        box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+        position: fixed;
+        top: 50%;
+        left: 40%;
+    }
 </style>
 
 <?php $this->end(); ?>
@@ -39,7 +46,12 @@
 
 
     <?php if (!count($this->details)) { ?>
-        <h3> No products are available </h3>
+        <div class='card1'>
+            <div class="card-body">
+                <h3> No products are available </h3>
+            </div>
+        </div>
+
     <?php } else { ?>
         <div class="row product-display">
             <?php foreach ($this->details as $value) { ?>
