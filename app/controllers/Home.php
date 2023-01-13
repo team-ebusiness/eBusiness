@@ -62,7 +62,7 @@ class Home extends Controller
             $search = $_REQUEST['term'];
 
             $db = Db::getInstance();
-            $sql = "SELECT * FROM product WHERE product_name LIKE '%$search%'";
+            $sql = "SELECT * FROM product WHERE product_name LIKE '%$search%' limit 10;";
             $results = $db->query($sql)->results();
 
             $html = "";
