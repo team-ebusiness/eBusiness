@@ -91,7 +91,7 @@
                         <a class="dropdown_item sub" href=<?= PROOT . "Inventory" ?>>
                             Inventory<br>
                         </a>
-                        <a class="dropdown_item sub" href="#" ?>>
+                        <a class="dropdown_item sub" href="<?= PROOT ?>reports" ?>>
                             Reports<br>
                         </a>
 
