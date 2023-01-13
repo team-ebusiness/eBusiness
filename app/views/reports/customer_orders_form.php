@@ -1,4 +1,6 @@
+
 <?php $this->setSiteTitle('Customer Orders'); ?>
+
 
 <?php $this->start('head'); ?>
 
@@ -6,6 +8,7 @@
 
 <?php $this->start('body'); ?>
 <center>
+
   <br>
     <h1> Customer Orders Report</h1>
 
@@ -15,6 +18,7 @@
   <input type="number" name="id" min="1" required placeholder="ID">
   <input type="submit" value="Search",name="Search">
     </form><style>
+
 table, th, td {
   border: 1.5px solid black;
   border-collapse: collapse;
@@ -71,4 +75,5 @@ th, td {
     <br>
     <div>
         <a href="index"><button style="width: 100px;margin-left: 50%">Back</button></a><div>
+
 <?php $this->end(); ?>

@@ -6,6 +6,7 @@
 
 <?php $this->start('body'); ?>
 
+
     <style>
         body{
             font-family: 'Open Sans', sans-serif;
@@ -135,3 +136,8 @@
         </div>
     </section>
 <?php $this->end(); ?>
+
+<h1 class="text-center red">This is the report Index page</h1>
+
+<?php $this->end(); ?>
+

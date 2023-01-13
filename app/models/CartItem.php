@@ -1,4 +1,5 @@
 <?php
+#[AllowDynamicProperties]
 
 class CartItem extends Model{
     public function __construct(){

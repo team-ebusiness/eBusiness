@@ -1,37 +1,27 @@
 <?php
+#[AllowDynamicProperties]
 
-class Cart extends Controller {
-    private array $pageRestrict = [
-        'checkout' => false,
-        'payment' => false,
-        'successful' => false
-    ];
-    // S_PATH/e_business/cart
-    // constructor
-    // cart/items : img,name, price, quantity, subtotal
-    // cart/checkout : name, quantity, subtotal
-    // cart/payment : [optional]
-    // cart/successful  :placed
-
+class Cart extends Controller
+{
     public function __construct($controller, $action)
     {
         parent::__construct($controller, $action);
+
+        if (!isset($_SESSION['checkout'])) {
+            $_SESSION['checkout'] = false;
+            $_SESSION['payment'] = false;
+            $_SESSION['successful'] = false;
+        }
     }
 
     public function itemsAction()
     {
-        if ($_POST) {
-            $this->pageRestrict['checkout'] = true;
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $_SESSION['checkout'] = true;
             Router::redirect('cart/checkout');
         }
 
-        if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn']) {
-            $db = Db::getInstance();
-            $results = $db->call_procedure('view_cart', [Customer::currentLoggedInUser()->customer_id]);
-
-            // TODO: implement the functionality to generate the html for the cart items
-//            $this->view->itemsToDisplay['cart/items'] = $results;
-        } else {
+        if (!isset($_SESSION['isLoggedIn']) || !$_SESSION['isLoggedIn']) {
             Router::redirect('account/signin');
         }
 
@@ -41,16 +31,28 @@ class Cart extends Controller {
 
     public function checkoutAction()
     {
-        if ($_POST) {
-            $this->pageRestrict['payment'] = true;
-            Router::redirect('cart/payment');
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if (isset($_POST['action'])) {
+                $_SESSION['successful'] = true;
+                $date = date('Y-m-d H-i-s');
+
+                $db = Db::getInstance();
+                $db->query("insert into payment values (null, '{$date}', {$_POST['total']})");
+                $db->call_procedure('place_order', [
+                    $_SESSION[Customer::currentLoggedInUser()->getSessionName()],
+                    $_POST['date'],
+                    'on_delivery'
+                ]);
+            } else {
+                $_SESSION['payment'] = true;
+                Router::redirect('cart/payment');
+            }
         }
 
-        if (!$this->pageRestrict['checkout']) {
+        if (!$_SESSION['checkout']) {
             header("HTTP/1.1 403 Unauthorized");
             exit;
         }
-        // TODO: implement the functionality to generate the html for the checkout page
 
         $this->view->setLayout('default');
         $this->view->render('cart/checkout');
@@ -59,11 +61,11 @@ class Cart extends Controller {
     public function paymentAction()
     {
         if ($_POST) {
-            $this->pageRestrict['successful'] = true;
+            $_SESSION['successful'] = true;
             Router::redirect('cart/successful');
         }
 
-        if (!$this->pageRestrict['payment']) {
+        if (!$_SESSION['payment']) {
             header("HTTP/1.1 403 Unauthorized");
             exit;
         }
@@ -74,17 +76,32 @@ class Cart extends Controller {
 
     public function successfulAction()
     {
-        if (!$this->pageRestrict['successful']) {
+        if (!$_SESSION['successful']) {
             header("HTTP/1.1 403 Unauthorized");
             exit;
         }
 
-        foreach ($this->pageRestrict as $key => $value) {
-            $this->pageRestrict[$key] = false;
-        }
+        $_SESSION['checkout'] = false;
+        $_SESSION['payment'] = false;
+        $_SESSION['successful'] = false;
 
         $this->view->setLayout('default');
         $this->view->render('cart/successful');
-        header("Refresh:5; url=" . PROOT . "home/index");
+        header("Refresh:5; url=" . PROOT);
+    }
+
+    public function removeAction()
+    {
+        $db = Db::getInstance();
+        $id = $_POST['id'];
+        $id = (int)substr($id, 6);
+
+        $db->call_procedure('remove_item_from_cart', [$_SESSION[Customer::currentLoggedInUser()->getSessionName()], $id]);
+    }
+
+    public function on_deliveryAction()
+    {
+        $db = Db::getInstance();
+
     }
 }

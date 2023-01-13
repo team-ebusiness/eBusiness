@@ -1,10 +1,25 @@
-<?php $this->setSiteTitle('Title here'); ?>
+<?php $this->setSiteTitle('Home'); ?>
 
 <?php $this->start('head'); ?>
 
 <?php $this->end(); ?>
 
 <?php $this->start('body'); ?>
-<h4 class="text-center h4-title-card bg-primary">Welcome to Title!</h4>
+
+
+</div>
+<div class="row home-bar">
+
+    <div class="col-md-5 index-welcome">
+        <br>
+        <p class="welcome capital">welcome</p><br>
+        <p class="welcome to">to</p><br>
+        <p class="welcome capital">e-shop</p>
+    </div>
+    <div class="col-md-7 home-img">
+        <br><br>
+        <img class="img" src="<?= PROOT ?>images/img1.png">
+    </div>
+</div>
 
 <?php $this->end(); ?>

@@ -1,4 +1,6 @@
+
 <?php $this->setSiteTitle('Most Sold Categories'); ?>
+
 
 <?php $this->start('head'); ?>
 
@@ -7,7 +9,9 @@
 
 <?php $this->start('body'); ?>
 <center>
+
   <br>
+
 <h2 class="text-center red">Most Sold Categories</h2>
 <br>
 <style>

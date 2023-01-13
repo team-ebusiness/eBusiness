@@ -10,6 +10,10 @@ class CartItemController extends Controller {
     }
 
     public function addItemAction(){
+        if(!$_SESSION[CURRENT_USER_SESSION_NAME]){
+            Session::set('current_position', 'Browsing/variantDisplay/'.Session::get('product_id'));
+            Router::redirect("Account/signin");
+        }
         $productVariant=$this->ProductVariantModel->findFirst([
             'conditions' => 'product_variant_id=?',
             'bind' => [$_POST['variant_id']]

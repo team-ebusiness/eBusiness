@@ -1,4 +1,5 @@
 <?php
+#[AllowDynamicProperties]
 
 class Product extends Model{
     public function __construct(){

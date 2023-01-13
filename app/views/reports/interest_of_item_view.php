@@ -1,4 +1,6 @@
+
 <?php $this->setSiteTitle('Interest of an Item'); ?>
+
 
 <?php $this->start('head'); ?>
 
@@ -6,8 +8,10 @@
 
 <?php $this->start('body'); ?>
 <center>
+
   <br>
 <h2 class="text-center red">Interest of an Item Over Time</h2>
+
 <br>
 <style>
 table, th, td {

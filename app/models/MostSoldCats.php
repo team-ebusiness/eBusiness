@@ -1,5 +1,6 @@
 <?php
 
+
 class MostSoldCats extends Model {
 
   private $db;

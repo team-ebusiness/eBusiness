@@ -8,7 +8,9 @@ class InterestOfItem extends Model {
     $this->db = Db::getInstance();
   }
 
+
   public function getInterestOfItem($id,$year) {
+
     /*SELECT MONTHNAME(order_created_date) as month, SUM(ci.quantity) as num_sales
     FROM `order` o
     JOIN cart_item ci ON o.cart_id = ci.cart_id
@@ -18,6 +20,7 @@ class InterestOfItem extends Model {
     //query for the following procedure
     
     $stmt = $this->db->query("CALL `monthly_sales`($id,$year)");
+
     //$stmt->execute(array(":year" => $year));
     return $stmt->results();
     //return $stmt->fetchAll();
