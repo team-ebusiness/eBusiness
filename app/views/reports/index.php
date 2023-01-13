@@ -90,7 +90,7 @@
             <div class="col-md-4 mt-4">
                 <div class="card profile-card-5">
                     <div class="card-img-block">
-                        <a href="customer_orders" target="_blank">
+                        <a href="<?= PROOT ?>reports/customer_orders" target="_blank">
                             <img class="card-img-top" src="https://media.istockphoto.com/id/1223930609/vector/audit-report-or-research-of-sales-financial-data-vector-flat-cartoon-icon-tax-analyze-on.jpg?s=612x612&w=0&k=20&c=4Cc7l2nSGLkdC19faNJNTSG4C_KWh_ybZLPgO0JY0pc=" alt="Card image cap" style="width: 91%;height:200px;margin: 0 0 0 15px;position: relative;top: -20px;"></a>
                         <div class="card-body pt-0">
                             <h5 class="card-title">Customer Order</h5>
@@ -105,7 +105,7 @@
             <div class="col-md-4 mt-4">
                 <div class="card profile-card-5">
                     <div class="card-img-block">
-                        <a href="interest_of_item" target="_blank">
+                        <a href="<?= PROOT ?>reports/interest_of_item" target="_blank">
                             <img class="card-img-top" src="https://www.shutterstock.com/image-illustration/chart-rising-interest-rates-percentages-600w-2115606887.jpg" alt="Card image cap" style="width: 91%;height:200px;margin: 0 0 0 15px;position: relative;top: -20px" ></a>
                         <div class="card-body pt-0">
                             <h5 class="card-title">Most Interested</h5>
@@ -119,7 +119,7 @@
             <div class="col-md-4 mt-4">
                 <div class="card profile-card-5">
                     <div class="card-img-block">
-                        <a href="most_sold_products" target="_blank">
+                        <a href="<?= PROOT ?>reports/most_sold_products" target="_blank">
                             <img class="card-img-top" src="https://www.newbreedrevenue.com/hubfs/reporting.png" alt="Card image cap" style="width: 91%;height:200px;margin: 0 0 0 15px;position: relative;top: -20px" ></a>
                         <div class="card-body pt-0">
                             <h5 class="card-title">Most sold Items</h5>
@@ -130,10 +130,10 @@
                 </div>
             </div>
 
-            <div class="col-md-4 mt-4" style="alignment: center;margin-left:20%">
+            <div class="col-md-4 mt-4" style="align-items: center;margin-left:20%">
                 <div class="card profile-card-5">
                     <div class="card-img-block">
-                        <a href="most_sold_cats" target="_blank">
+                        <a href="reports/most_sold_cats" target="_blank">
                             <img class="card-img-top" src="https://cdn-icons-png.flaticon.com/512/8161/8161879.png" alt="Card image cap"style="width: 91%;height:200px;margin: 0 0 0 15px;position: relative;top: -20px" ></a>
                         <div class="card-body pt-0">
                             <h5 class="card-title">Most sold Categories</h5>
@@ -147,7 +147,7 @@
             <div class="col-md-4 mt-4" style="align-items: flex-end; margin-left:fill">
                 <div class="card profile-card-5">
                     <div class="card-img-block">
-                        <a href="quarterly_sales" target="_blank">
+                        <a href="reports/quarterly_sales" target="_blank">
                             <img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ1T1k6dVsccZlQEBISUeHo8TNZZajUmBF5Q&usqp=CAU" alt="Card image cap" style="width: 91%;height:200px;margin: 0 0 0 15px;position: relative;top: -20px"></a>
                         <div class="card-body pt-0">
                             <h5 class="card-title">Quarterly Sales</h5>
