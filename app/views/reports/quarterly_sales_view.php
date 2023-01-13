@@ -1,4 +1,6 @@
-<?php $this->setSiteTitle('1st Report'); ?>
+
+<?php $this->setSiteTitle('Quarterly Sales'); ?>
+
 
 <?php $this->start('head'); ?>
 
@@ -7,6 +9,8 @@
 
 <?php $this->start('body'); ?>
 <center>
+  <br>
+
 <h2 class="text-center red">Quarterly Sales</h2>
 <br>
 <style>

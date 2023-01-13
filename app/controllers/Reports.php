@@ -15,7 +15,7 @@ class Reports extends Controller {
         $this->load_model('MostSoldCats');
         $this->load_model('InterestOfItem');
         $this->load_model('CustomerOrders');
-        
+
         $this->view->setLayout('default');
         
       }
@@ -34,7 +34,9 @@ class Reports extends Controller {
           }
     }
     
-    public function most_sold_itemsAction(){
+
+    public function most_sold_productsAction(){
+
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $from = $_POST['from'];
             $to = $_POST['to'];
@@ -60,7 +62,9 @@ class Reports extends Controller {
     public function interest_of_itemAction(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $id = $_POST['id'];
-            $interesOfItem = $this->InterestOfItemModel->getInterestOfItem($id);
+
+            $year = $_POST['year'];
+            $interesOfItem = $this->InterestOfItemModel->getInterestOfItem($id,$year);
             $this->view->interesOfItem = $interesOfItem;
             $this->view->render('reports/interest_of_item_view');}
            else {

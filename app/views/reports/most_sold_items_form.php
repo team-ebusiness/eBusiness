@@ -1,4 +1,6 @@
-<?php $this->setSiteTitle('2nd Report'); ?>
+
+<?php $this->setSiteTitle('Most Sold Products'); ?>
+
 
 <?php $this->start('head'); ?>
 
@@ -6,9 +8,13 @@
 
 <?php $this->start('body'); ?>
 <center>
- <h1> Most Sold Items Report</h1>
-<form method="post" action="<?=PROOT?>reports/most_sold_items">
-  <label>Enter dates:</label>
+
+  <br>
+ <h1> Most Sold Products Report</h1>
+ <br>
+<form method="post" action="<?=PROOT?>reports/most_sold_products">
+  <label><strong> Enter Dates: </strong></label>
+
   <input type="date" name="from">
   <input type="date" name="to" >
   <input type="submit" value="Search",name="Search">
@@ -17,5 +23,9 @@
 <table>
 
 </center>
+
+<br>
+<div>
+    <a href="index"><button style="width: 100px;margin-left: 50%">Back</button></a><div>
 
 <?php $this->end(); ?>

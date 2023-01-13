@@ -1,4 +1,6 @@
-<?php $this->setSiteTitle('1st Report'); ?>
+
+<?php $this->setSiteTitle('Interest of an Item'); ?>
+
 
 <?php $this->start('head'); ?>
 
@@ -6,10 +8,15 @@
 
 <?php $this->start('body'); ?>
 <center>
-  <h1> Interest Over Time of an item</h1>
+  <br>
+  <h1> Interest of an item Report</h1>
+  <br>
 <form method="post" action="<?=PROOT?>reports/interest_of_item">
-  <label>Enter Product ID:</label>
-  <input type="number" min="1" name="id">
+  <label><strong> Enter Product ID:</strong></label>
+  <input type="number" min="1" name="id" placeholder="ID">
+  <label><strong> Enter Year:</strong></label>
+  <input type="number" min="2000" name="year" placeholder="year">
+
   <input type="submit" value="Search",name="Search">
 </form>
 <style>
@@ -30,7 +37,9 @@ th, td {
   //SELECT product_id,product_name FROM product ORDER by product_id
   //query for the following view
   
-  $products = $db->query('SELECT * FROM `product_details`')->results();
+
+  $products = $db->query('SELECT * FROM product ORDER by product_id')->results();
+
   echo '<table style="width: 30%; height: 100%">';
   echo '<tr border=2px>
         <th>Product ID</th>
@@ -46,4 +55,8 @@ th, td {
 ?>
 </table>
 </center>
+<br>
+<div>
+    <a href="index"><button style="width: 100px;margin-left: 50%">Back</button></a><div>
+
 <?php $this->end(); ?>

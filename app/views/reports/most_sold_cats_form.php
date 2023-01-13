@@ -1,4 +1,6 @@
-<?php $this->setSiteTitle('3rd Report'); ?>
+
+<?php $this->setSiteTitle('Most Sold Categories'); ?>
+
 
 <?php $this->start('head'); ?>
 
@@ -6,10 +8,13 @@
 
 <?php $this->start('body'); ?>
 <center>
-  <h1> Most sold Categories</h1>
+  <br>
+  <h1>Most Sold Categories Report</h1>
+  <br>
 <form method="post" action="<?=PROOT?>reports/most_sold_cats">
-  <label>Enter year:</label>
-  <input type="number" name="year" min="2000" max="2100" required>
+<label><strong> Enter year:</strong></label>
+  <input type="number" name="year" min="2000" max="2100" required placeholder="year">
+
   <input type="submit" value="Search",name="Search">
 </form>
 <br>
@@ -17,4 +22,8 @@
 
 </table>
 </center>
+
+    <br>
+    <div>
+        <a href="index"><button style="width: 100px;margin-left: 50%">Back</button></a><div>
 <?php $this->end(); ?>

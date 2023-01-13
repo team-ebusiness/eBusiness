@@ -1,4 +1,6 @@
-<?php $this->setSiteTitle('1st Report'); ?>
+
+<?php $this->setSiteTitle('Quarterly Sales'); ?>
+
 
 <?php $this->start('head'); ?>
 <style>
@@ -15,13 +17,22 @@ th, td {
 
 <?php $this->start('body'); ?>
 <center>
+
+  <br>
   <h1> Quarterly Sales Report</h1>
+  <br>
 <form method="post" action="<?=PROOT?>reports/quarterly_sales">
-  <label>Enter year:</label>
-  <input type="number" name="year" min="2000" max="2100" required>
+  <label><strong> Enter year:</strong></label>
+  <input type="number" name="year" min="2000" max="2100" required placeholder="year">
+
   <input type="submit" value="Search",name="Search">
 </form>
 <br>
 
 </center>
+
+    <br>
+    <div>
+        <a href="index"><button style="width: 100px;margin-left: 50%">Back</button></a><div>
+
 <?php $this->end(); ?>

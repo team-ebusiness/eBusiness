@@ -1,4 +1,6 @@
-<?php $this->setSiteTitle('5th Report'); ?>
+
+<?php $this->setSiteTitle('Customer Orders'); ?>
+
 
 <?php $this->start('head'); ?>
 
@@ -6,6 +8,8 @@
 
 <?php $this->start('body'); ?>
 <center>
+
+  <br>
 <h2 class="text-center red">Customer Orders</h2>
 <br>
 <style>
