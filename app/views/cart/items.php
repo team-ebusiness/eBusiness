@@ -87,7 +87,8 @@ $total = 0;
                                 <div class="row d-flex justify-content-between align-items-center">
                                     <div class="col-md-2 col-lg-2 col-xl-2">
                                         <a href="<?= PROOT ?>browsing/variantDisplay/<?php echo $id_product; ?>">
-                                        <?php echo "<img height='64' width='64' border-radius='15' src='" . $row->product_variant_img . "' />"; ?></a>
+                                        <img height='64' width='64' border-radius='15' src='<?= PROOT.$row->product_variant_img ?>' ></a>
+                
                                     </div>
                                     <div class="col-md-3 col-lg-3 col-xl-3">
                                         <p class="lead fw-normal mb-2"><?php echo $row->product_name ?></p><span style="font-size:100%;color:yellow;">&starf;&starf;&starf;&starf;</span><span style="font-size:100%;border-color: black">&starf;<i class="review-count" style="font-size:12px ;font-style: normal;color: black"><p id= "<?php echo $total; ?>"><script>
