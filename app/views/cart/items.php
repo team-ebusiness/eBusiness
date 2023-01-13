@@ -39,7 +39,7 @@ $total = 0;
             }
 
             $('#pay-btn').on('click', function () {
-                window.location.href = "<?= PROOT ?>browsing/variantDisplay/1";
+                window.location.href = "<?= PROOT ?>home";
             });
         });
     </script>
